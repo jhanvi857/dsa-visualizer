@@ -1,12 +1,26 @@
-# React + Vite
+# 📊 DSA Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DSA Visualizer** is an interactive web app that helps users understand how data structures and algorithms work through animations. It's designed to make DSA learning intuitive and beginner-friendly.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔹 Visualizations for:
+  - Arrays, Strings, Stacks, Queues, Linked Lists, Trees, Graphs, HashMaps, HashSets.
 
-## Expanding the ESLint configuration
+- 🔹 Algorithm Animations:
+  - Sorting (Merge, Quick, Heap, Insertion, etc.)
+  - Graph algorithms (BFS, DFS, Dijkstra, Kruskal, Topo Sort)
+  - DP & Greedy (LCS, Coin Change, etc.)
+  - Prefix sum & difference array 
+  - Recursion and backtracking
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔹 Classical problems with:
+  - Step-by-step animations
+  - Explanation & pseudocode
+  - User-submitted approaches (via form)
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React.js, Tailwind CSS
+- **Backend**: Node.js, Express.js (for user input handling)
+- **Database**: MongoDB 
