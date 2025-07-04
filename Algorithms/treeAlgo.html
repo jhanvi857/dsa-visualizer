@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Algorithms</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        background-image: url("https://i.pinimg.com/736x/fe/e0/6a/fee06a2c63c53dbf14061770258b7ad3.jpg");
+        background-size: contain;
+        background-attachment: fixed;
+        background-position: center;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        color: white;
+      }
+      h1 {
+        font-family: "Poppins", sans-serif;
+      }
+      hr {
+        margin: 2rem auto;
+        height: 2px;
+        background-color: #22d3ee; /* cyan-400 */
+        box-shadow: 0 0 10px #22d3ee;
+        border: none;
+        width: 98%;
+      }
+    </style>
+</head>
+<body>
+    <nav class="h-16 left-0 w-full fixed top-0 z-50">
+      <!-- Main Container -->
+      <div class="bg-white/10 backdrop-blur-md shadow-xl px-4 sm:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Brand / Logo -->
+          <div class="text-white font-bold text-xl">DSA Visualizer</div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden sm:flex space-x-4 items-center">
+            <a
+              href="#"
+              class="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              >Data Structures</a
+            >
+            <a
+              href="#"
+              class="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              >Algorithms</a
+            >
+            <a
+              href="#"
+              class="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              >Classical Problems</a
+            >
+          </div>
+
+          <!-- Mobile Hamburger Icon -->
+          <div class="sm:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div
+          id="mobile-menu"
+          class="hidden sm:hidden flex-col space-y-2 mt-2 pb-4"
+        >
+          <a
+            href="#"
+            class="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
+            >Data Structures</a
+          >
+          <a
+            href="#"
+            class="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
+            >Algorithms</a
+          >
+          <a
+            href="#"
+            class="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
+            >Classical Problems</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main class="pt-20 px-4">
+    <!-- tree algorithms -->
+     <h1 class="text-white text-4xl text-center mb-8 font-semibold">
+          Tree Algorithms
+        </h1>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8"
+        >
+          <div
+            class="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h1
+              class="text-xl md:text-3xl font-semibold text-white text-center mb-4"
+            >
+              Tree <br> Traversals
+            </h1>
+            <div class="flex justify-center items-center h-16">
+              <a
+                href="#"
+                class="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+              >
+                Visualize &#8594;
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h1
+              class="text-xl md:text-3xl font-semibold text-white text-center mb-4"
+            >
+              Lowest Common Ancestor
+            </h1>
+            <div class="flex justify-center items-center h-16">
+              <a
+                href=""
+                class="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+              >
+                Visualize &#8594;
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h1
+              class="text-xl md:text-3xl font-semibold text-white text-center mb-4"
+            >
+              BST <br> Operations
+            </h1>
+            <div class="flex justify-center items-center h-16">
+              <a
+                href="#"
+                class="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+              >
+                Visualize &#8594;
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h1
+              class="text-xl md:text-3xl font-semibold text-white text-center mb-4"
+            >
+              Segment <br> Tree
+            </h1>
+            <div class="flex justify-center items-center h-16">
+              <a
+                href=""
+                class="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+              >
+                Visualize &#8594;
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr>
+</main>
+</body>
+</html>
