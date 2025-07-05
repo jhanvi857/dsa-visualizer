@@ -263,7 +263,6 @@ export async function diameterOfBinaryTree(root) {
   return maxDiameter;
 }
 
-// build tree from array
 export function buildTreeFromArray(arr) {
   if (!arr.length || arr[0] == null) return null;
 
@@ -309,6 +308,43 @@ export function deleteTreeNode(root, key) {
   }
 
   return root;
+}
+// 🔥 Add this function to your existing tree logic file
+export async function animateTreeHeight(rootNode) {
+  const container = getContainer();
+
+  let maxHeight = 0;
+  let deepestPath = [];
+
+  function dfs(node, depth = 0, path = []) {
+    if (!node) return;
+
+    const currentPath = [...path, node];
+
+    if (!node.left && !node.right && depth > maxHeight) {
+      maxHeight = depth;
+      deepestPath = currentPath;
+    }
+
+    dfs(node.left, depth + 1, currentPath);
+    dfs(node.right, depth + 1, currentPath);
+  }
+
+  dfs(rootNode);
+
+  // Highlight the deepest path
+  for (let node of deepestPath) {
+    const nodeDiv = [...container.querySelectorAll("div")].find(
+      (d) => d.innerText == node.value && d.classList.contains("rounded-full")
+    );
+    if (nodeDiv) {
+      nodeDiv.classList.add("bg-yellow-400");
+      await sleep(600);
+      nodeDiv.classList.remove("bg-yellow-400");
+    }
+  }
+
+  createStatus(container, `Height of the tree is: ${maxHeight}`);
 }
 
 

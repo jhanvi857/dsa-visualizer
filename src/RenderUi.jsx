@@ -5,6 +5,7 @@ import { visualOperations } from "./utils/visualizer";
 import { useState } from "react";
 import { redirectToVisualizer } from "../classical_questions/queVisualize";
 import { climbingStairsDP, prefixDiffCombined, slidingWindowSum, toggleBitAnimation } from "./animation/algoAnimation";
+import { problemAnswers } from "./animation/problemAnimations";
 export function SearchingSorting() {
   const sortingAlgorithms = [
   { name: "Bubble Sort", func:()=> bubbleSort([2,1,3,8,7])},
@@ -273,7 +274,7 @@ export function Greedy() {
 </div>
 <hr />
 {/* Visualization area*/}
-    <VisualizeArea/>
+    <VisualizeArea onExplain={()=>problemAnswers["container with most water"]([1, 8, 6, 2, 5, 4, 8, 3, 7])}/>
     </>
   );
 }

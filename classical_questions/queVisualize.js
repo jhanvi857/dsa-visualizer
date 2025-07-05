@@ -7,12 +7,13 @@ import {
   renderTree,
   buildTreeFromArray,
   huffmanEncoding,
+  animateTreeHeight,
 } from "../src/utils/structure";
 import {
   coinChange,
   longestCommonSubsequence,
 } from "../src/animation/algoAnimation";
-import { animateLRUCache } from "../src/animation/hashing";
+import { animateLRUCache, twoSum } from "../src/animation/hashing";
 import { pseudoExplain } from "./pseudoExplain";
 
 // const pseudoExplain = {};
@@ -37,6 +38,22 @@ export async function runAnimationAndExplain({ key, visualizeElement, inputEleme
   let displayInput = "";
 
   switch (cleanedKey) {
+    case "two-sum":
+      twoSum();
+      break;
+    case "maximum subarray sum":
+      displayInput = "";
+      problemAnswers[cleanedKey]();
+      break;
+      case "height of a binary tree":
+        const arr = [1,2,3,4,5];
+        const root = buildTreeFromArray(arr);
+        renderTree(root);
+        animateTreeHeight(root);
+        break;
+        case "next greater element":
+          problemAnswers[cleanedKey]([2,1,2,4,3]);
+          break;
     case "pair sum problem":
       displayInput = "nums = [2, 7, 13, 11], target = 9";
         if (inputElement) inputElement.value = displayInput;

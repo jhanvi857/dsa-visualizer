@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import questions from "./questions.json";
 import { runAnimationAndExplain } from "./queVisualize";
-
+import { Link } from "react-router-dom";
 function ClassicalQ() {
   const [showDetails, setShowDetails] = useState({});
   const visualizeRef = useRef(null);
@@ -147,8 +147,7 @@ runAnimationAndExplain({
                 cols="30"
                 type="text"
                 id="custom-input"
-                placeholder="e.g. nums = [2,7,11,15],
-        target = 9"
+                placeholder="the input on which the visualization in running will be shown here."
                 className="block w-full bg-gray-900 text-white placeholder:text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 sm:text-lg"
               ></textarea>
             </div>
@@ -163,26 +162,16 @@ runAnimationAndExplain({
               <h3 className="text-base sm:text-lg font-semibold text-white mb-2 text-center">
                 Got a different approach? ✍️
               </h3>
-              <textarea
-                id="user-approach"
-                rows="8"
-                placeholder="Write your own logic or approach here..."
-                className="w-full bg-gray-900 text-white font-mono placeholder:text-white rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-white/30 sm:text-lg sm:leading-6 resize-none"
-              ></textarea>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <input
-                  type="text"
-                  id="user-name"
-                  placeholder="Your name or username (compulsory)"
-                  className="w-full sm:w-1/3 mt-2 bg-gray-300 text-gray-500 placeholder:text-gray-500 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-lg sm:leading-6"
-                />
-
+              
+              <div className="flex flex-col items-center sm:flex-row justify-center">
+                <Link to="/">
                 <button
-                  className="bg-gray-500 shadow-lg mt-2 shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+                  className="bg-cyan-400 shadow-lg mt-2 shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
                   id="submit-approach"
                 >
                   Submit your approach
                 </button>
+                </Link>
               </div>
             </div>
           </div>

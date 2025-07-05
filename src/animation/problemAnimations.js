@@ -11,6 +11,7 @@ import {
   resetContainer,
   createBoxList,
   getContainer,
+  highlight
 } from "../utils/visualHelpers";
 import { visualOperations } from "../utils/visualizer";
 export const problemAnswers = {
@@ -579,6 +580,53 @@ export const problemAnswers = {
 
     createStatus(container, "Next permutation generated.");
   },
+  "next greater element": async function nextGreaterElement(arr) {
+  const container = getContainer();
+  resetContainer("flex items-end justify-center gap-4", container);
+
+  const boxes = createBoxList(arr, container);
+  const n = arr.length;
+  const stack = [];
+  const res = Array(n).fill(-1);
+
+  const status = createStatus(container, "Finding next greater elements...");
+
+  for (let i = 0; i < n; i++) {
+    const currBox = boxes[i];
+    await delay(600);
+    await highlight(currBox, "bg-yellow-500");
+
+    while (stack.length > 0 && arr[i] > arr[stack[stack.length - 1]]) {
+      const idx = stack.pop();
+      res[idx] = arr[i];
+
+      const fromBox = boxes[idx];
+      const toBox = boxes[i];
+
+      const arrow = createArrow("green-400", "→");
+      arrow.style.position = "absolute";
+      arrow.style.top = `${fromBox.offsetTop - 30}px`;
+      arrow.style.left = `${(fromBox.offsetLeft + toBox.offsetLeft) / 2}px`;
+      arrow.style.transform = "translate(-50%, -50%)";
+      container.appendChild(arrow);
+
+      await highlight(fromBox, "bg-green-500");
+      await delay(500);
+    }
+
+    stack.push(i);
+  }
+
+  // Final pass for remaining elements with no NGE
+  while (stack.length > 0) {
+    const idx = stack.pop();
+    await highlight(boxes[idx], "bg-red-500");
+    await delay(300);
+  }
+
+  status.innerText = `Next Greater Array: [${res.join(", ")}]`;
+}
+
 };
 
 // isPossible function

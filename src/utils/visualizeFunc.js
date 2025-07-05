@@ -1,4 +1,5 @@
 // LL create and operations...
+import { getContainer } from "./visualHelpers";
 import { visualOperations } from "./visualizer";
     const container = document.getElementById("visualize");
 
@@ -97,6 +98,7 @@ export function hashKey(key, size) {
   return hash % size;
 }
 export function showMessage(text) {
+  const container = getContainer();
   const msg =
     document.getElementById("message") || document.createElement("div");
   msg.id = "message";

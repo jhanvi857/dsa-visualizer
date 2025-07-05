@@ -26,7 +26,26 @@ function App() {
         <Route path="/explore-questions" element={<ClassicalQ/>} />
       </Routes>
       </main>
-      
+      <footer className="bg-white/20 text-white py-6 mt-8 shadow-inner">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+    <div className="mb-2 md:mb-0">
+      © 2025. Made with ❤️ using React, tailwind css & Node.js.
+    </div>
+
+    <div className="flex space-x-4">
+      <a href="https://github.com/jhanvi857" target="_blank" rel="noreferrer" className="hover:text-cyan-400">
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/jhanvi-patel-0a032b35a/" target="_blank" rel="noreferrer" className="hover:text-cyan-400">
+        LinkedIn
+      </a>
+      <a href="mailto:you@example.com" className="hover:text-cyan-400">
+        Contact
+      </a>
+    </div>
+  </div>
+</footer>
+
     </>
     
   );

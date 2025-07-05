@@ -13,7 +13,7 @@ export default function SubmitApproachForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Optional: Basic validation
@@ -26,18 +26,30 @@ export default function SubmitApproachForm() {
       alert("Please fill in all required fields.");
       return;
     }
-
-    // TODO: Send data to backend or Firestore
-    console.log("Submitted data:", formData);
-
-    alert("Your approach has been submitted!");
-    setFormData({
-      problem: "",
-      name: "",
-      email: "",
-      explanation: "",
-      pseudocode: "",
-    });
+    try {
+      const res = await fetch("http://localhost:5000/submit-approach",{
+        
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json" // ✅ fix here
+        },
+        body:JSON.stringify(formData)
+      });
+      if (res.ok) {
+      alert("Your approach has been submitted!");
+      setFormData({
+        problem: "",
+        name: "",
+        email: "",
+        explanation: "",
+        pseudocode: ""
+      });
+    } else {
+      alert("Submission failed. Please try again.");
+    }
+    } catch(err) {
+      console.log("Error occured connecting frontend with backend",err);
+    }
   };
 
   return (

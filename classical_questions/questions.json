@@ -1,4 +1,8 @@
 {
+  "Two-sum": "Find two indices where nums[i] + nums[j] = target.",
+  "Maximum subarray sum": "Find the consicutive subarray which has highest sum",
+  "Next greater Element": "Find the next greater element",
+  "Height of a Binary tree":"Find the maximum height of a binary tree",
   "Pair sum \nproblem": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.You may assume that each input would have exactly one solution, and you may not use the same element twice.You can return the answer in any order.\n\n\nexample:\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].",
   "Stock buy & \nSell": "You are given an array prices where prices[i] is the price of a given stock on the ith day.\nYou want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.\nReturn the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.\n\n\nexample:\nInput: prices = [7,1,5,3,6,4]\nOutput: 5",
   "Container with most water": "You are given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai).\n n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).\nFind two lines that together with the x-axis form a container that holds the most water.\n\n\nexample:\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49",
