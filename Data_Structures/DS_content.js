@@ -275,7 +275,7 @@ const contentData = {
       "Search engines",
     ],
     visualOperations: {
-      buttons: ["Insert", "Delete", "Search", "InorderTraversal","PreorderTraversal","PostorderTraversal","LevelorderTraversal"],
+      buttons: ["Insert", "Delete", "InorderTraversal","PreorderTraversal","PostorderTraversal","LevelorderTraversal"],
       pseudocode: {
         Insert: `function insert(root, key) {
   if (root == null) return { key, left: null, right: null };
@@ -536,113 +536,6 @@ function has(set, item) {
     "Happy number (Set)",
   ],
 },
-  trie: {
-    definition:
-      "A tree-like data structure used to store a dynamic set of strings where keys are usually strings.",
-    properties: [
-      "Hierarchical character-by-character storage",
-      "Efficient prefix matching",
-      "Space-optimized for common prefixes",
-    ],
-    types: ["Standard Trie", "Compressed Trie (Radix Tree)", "Suffix Trie"],
-    operations: [
-      "Insert a word",
-      "Search a word",
-      "Delete a word",
-      "Check for prefix existence",
-    ],
-    complexity: ["Insert: O(L)", "Search: O(L)", "Delete: O(L)"],
-    applications: [
-      "Auto-complete",
-      "Spell checker",
-      "IP routing",
-      "Prefix-based search",
-    ],
-    visualizeDesc:
-      "Watch words being inserted character by character and how nodes split or merge during deletion.",
-    visualOperations: {
-      buttons: ["Insert", "Search", "Delete"],
-      pseudocode: {
-        Insert: `function insert(root, word) {
-  node = root;
-  for (char of word) {
-    if (!node[char]) node[char] = {};
-    node = node[char];
-  }
-  node.isEnd = true;
-}`,
-        Search: `function search(root, word) {
-  node = root;
-  for (char of word) {
-    if (!node[char]) return false;
-    node = node[char];
-  }
-  return !!node.isEnd;
-}`,
-        Delete: `function delete(root, word, i = 0) {
-  if (i == word.length) {
-    delete root.isEnd;
-    return Object.keys(root).length === 0;
-  }
-  char = word[i];
-  if (!root[char]) return false;
-  shouldDelete = delete(root[char], word, i + 1);
-  if (shouldDelete) delete root[char];
-  return Object.keys(root).length === 0;
-}`,
-      },
-    },
-    algorithms: [
-      "Auto-complete system",
-      "Prefix matching",
-      "Word search",
-      "Longest common prefix",
-    ],
-  },
-
-  heap: {
-    definition:
-      "A complete binary tree used to implement priority queues, where each node satisfies the heap property.",
-    properties: [
-      "Complete binary tree",
-      "Parent is greater (max heap) or smaller (min heap) than children",
-      "Efficient access to min or max element",
-    ],
-    types: ["Min Heap", "Max Heap", "Binary Heap", "Fibonacci Heap"],
-    operations: ["Insert", "Delete", "Heapify", "Peek (min/max)"],
-    complexity: ["Insert: O(log n)", "Delete: O(log n)", "Peek: O(1)"],
-    applications: [
-      "Priority queues",
-      "Heap sort",
-      "Graph algorithms (Dijkstra, Prim)",
-    ],
-    visualizeDesc:
-      "See the heap structure grow and re-balance with sift-up and sift-down operations during insertions or deletions.",
-    visualOperations: {
-      buttons: ["Insert", "Delete", "Peek"],
-      pseudocode: {
-        Insert: `function insert(heap, value) {
-  heap.push(value);
-  siftUp(heap);
-}`,
-        Delete: `function delete(heap) {
-  const top = heap[0];
-  heap[0] = heap.pop();
-  siftDown(heap);
-  return top;
-}`,
-        Peek: `function peek(heap) {
-  return heap[0];
-}`,
-      },
-    },
-    algorithms: [
-      "Kth largest element",
-      "Merge K sorted lists",
-      "Top K frequent elements",
-      "Median in a stream",
-    ],
-  },
 };
 
 function populateContent(data) {
@@ -705,6 +598,7 @@ function generateAlgo(algoName) {
 `.trim();
     divs.innerText = algo;
     algoDiv.appendChild(divs);
+    divs.onclick=()=>window.location.href = "/explore-questions"
   });
 }
 function fillList(id, items) {

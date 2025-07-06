@@ -80,7 +80,6 @@ export default function SubmitApproachForm() {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="e.g. Rahul Patel"
           className="w-full px-4 py-2 rounded-md border border-gray-50 text-gray-50"
         />
       </div>
@@ -92,7 +91,6 @@ export default function SubmitApproachForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="e.g. rahul@example.com"
           className="w-full px-4 py-2 rounded-md border border-gray-50 text-gray-50"
         />
       </div>
