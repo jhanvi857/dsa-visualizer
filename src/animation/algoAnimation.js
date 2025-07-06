@@ -33,7 +33,7 @@ export async function sieveOfEratosthenes(n) {
   const isPrime = Array(n + 1).fill(true);
   isPrime[0] = isPrime[1] = false;
 
-  const boxes = createBoxList(Array.from({ length: n + 1 }, (_, i) => i));
+  const boxes = createBoxList(Array.from({ length: n + 1 }, (_, i) => i),container);
 
   for (let i = 2; i * i <= n; i++) {
     if (isPrime[i]) {

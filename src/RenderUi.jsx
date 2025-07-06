@@ -6,31 +6,63 @@ import { useState } from "react";
 import { redirectToVisualizer } from "../classical_questions/queVisualize";
 import { climbingStairsDP, prefixDiffCombined, slidingWindowSum, toggleBitAnimation } from "./animation/algoAnimation";
 import { problemAnswers } from "./animation/problemAnimations";
+import { pseudoExplain } from "../classical_questions/pseudoExplain";
+import { animateLCA, buildTreeFromArray, getRoot, renderTree } from "./utils/structure";
+import { useEffect } from "react";
 export function SearchingSorting() {
   const sortingAlgorithms = [
-  { name: "Bubble Sort", func:()=> bubbleSort([2,1,3,8,7])},
-  { name: "Selection Sort", func:()=> selectionSort([2,1,3,4,8,7])},
-  { name: "Insertion Sort", func: ()=> insertionSort([2,4,5,1,3,7]) },
-  { name: "Merge Sort", func: () => {
-    const container = getContainer();
-      const arr = [2, 7, 13, 11, 4, 8];
-      createBoxes(arr); 
-      mergeSort(arr); 
-    } 
+  {
+    name: "Bubble Sort",
+    func: () => bubbleSort([2, 1, 3, 8, 7]),
+    problemName: "bubble sort",
   },
-  { name: "Quick Sort", func: () =>{ 
-    const arr = [2, 7, 13, 11, 4, 8];
-    createBoxes(arr); 
-    quickSort(arr)} },
-  { name: "Heap Sort", func: () =>{
-    const arr = [2, 7, 13, 11, 4, 8];
-    createBoxes(arr)
-    heapSort(arr)
-  }  }
+  {
+    name: "Selection Sort",
+    func: () => selectionSort([2, 1, 3, 4, 8, 7]),
+    problemName: "selection sort",
+  },
+  {
+    name: "Insertion Sort",
+    func: () => insertionSort([2, 4, 5, 1, 3, 7]),
+    problemName: "insertion sort",
+  },
+  {
+    name: "Merge Sort",
+    func: () => {
+      const arr = [2, 7, 13, 11, 4, 8];
+      createBoxes(arr);
+      mergeSort(arr);
+    },
+    problemName: "merge sort",
+  },
+  {
+    name: "Quick Sort",
+    func: () => {
+      const arr = [2, 7, 13, 11, 4, 8];
+      createBoxes(arr);
+      quickSort(arr);
+    },
+    problemName: "quick sort",
+  },
+  {
+    name: "Heap Sort",
+    func: () => {
+      const arr = [2, 7, 13, 11, 4, 8];
+      createBoxes(arr);
+      heapSort(arr);
+    },
+    problemName: "heap sort",
+  },
 ];
+const [selectedAlgo, setSelectedAlgo] = useState(null);
+  const handleAlgoClick = (algo) => {
+    setSelectedAlgo(algo);
+  };
+
+
   return (
     <>
-      <div className="px-16">
+      <div className="px-12">
       <h1 className="text-4xl text-center m-4 font-bold text-white">
         Searching & Sorting Algorithms
       </h1>
@@ -45,7 +77,7 @@ export function SearchingSorting() {
             </h2>
             <a
               href="#visualize"
-              onClick={algo.func}
+              onClick={()=>handleAlgoClick(algo)}
               className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
             >
               Visualize →
@@ -55,37 +87,32 @@ export function SearchingSorting() {
       </div>
         <hr />
       {/* Visualization UI below */}
-      <VisualizeArea/>
+      <VisualizeArea onExplain={selectedAlgo?.func}
+          problemName={selectedAlgo?.problemName}/>
     </div>
     </>
   );
 }
 
 export function RecBackTrack() {
-  const [activeTab, setActiveTab] = useState("explanation");
+  const recBacktrackProblems = [
+  {
+    name: "Recursion Example: Fibonacci Series (Recursive)",
+    func: () => startFibAnimation(4),
+    problemName: "fibonacci (recursion)",
+  },
+  {
+    name: "Backtracking Example: Subsets of an Array",
+    func: () => startBacktrackingAnimation(),
+    problemName: "backtracking - subarrays",
+  },
+];
 
-  const explanation = `
-Recursion is when a function calls itself to solve a smaller part of the original problem.
-Think of it as breaking down a big problem into smaller and smaller ones until you reach a base case.
+  const [selectedAlgo, setSelectedAlgo] = useState(null);
 
-Example: Fibonacci Series
-fib(n) = fib(n-1) + fib(n-2)
-Base cases: fib(0) = 0, fib(1) = 1
-
-Backtracking is a type of recursion where you try out all possibilities (like in a maze or combinations), 
-and undo your previous step if it leads to a dead end.
-
-Key Concept: "Try → Explore → Undo (Backtrack)"
-`;
-
-  const pseudocode = `
-Function fib(n):
-  if n == 0:
-    return 0
-  if n == 1:
-    return 1
-  return fib(n-1) + fib(n-2)
-`;
+  const handleAlgoClick = (algo) => {
+    setSelectedAlgo(algo);
+  };
 
   return (
     <div className="px-12">
@@ -94,190 +121,219 @@ Function fib(n):
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="mb-10 bg-white/20 rounded-lg flex flex-col items-center">
-        <h2 className=" text-white text-2xl p-4">
-         Recursion Example: Fibonacci Series (Recursive)
-        </h2>
-        <a
+        {recBacktrackProblems.map((algo, idx) => (
+          <div
+            key={idx}
+            className="mb-10 bg-white/20 rounded-lg flex flex-col items-center"
+          >
+            <h2 className="text-white text-2xl p-4">{algo.name}</h2>
+            <a
               href="#visualize"
-              onClick={()=>startFibAnimation(4)}
+              onClick={() => handleAlgoClick(algo)}
               className="bg-cyan-500 mb-4 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
             >
               Visualize →
             </a>
+          </div>
+        ))}
       </div>
-      {/* Backtracking */}
-      <div className="mb-10 bg-white/20 rounded-lg flex flex-col items-center">
-        <h2 className=" text-white text-2xl p-4">
-         Backtracking Example: subsets of an array
-        </h2>
-        <a
-              href="#visualize"
-              onClick={()=>startBacktrackingAnimation()}
-              className="bg-cyan-500 mb-4 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-            >
-              Visualize →
-            </a>
-      </div>
-      </div>
+
       <hr />
-      <VisualizeArea/>
+      <VisualizeArea
+        onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}
+      />
     </div>
   );
 }
 
-export function DP() {
-  const dpProblems = [
-  {
-    name: "Climbing Stairs",
-    func: () => climbingStairsDP(7),
-  }
-];
 
+export function DP() {
+  const dpCards = [
+  {
+    title: "Definition",
+    content:
+      "Dynamic Programming (DP) solves complex problems by breaking them into simpler subproblems and storing results to avoid redundant work.",
+  },
+  {
+    title: "Properties",
+    isList: true,
+    content: [
+      "Overlapping Subproblems",
+      "Optimal Substructure",
+      "Memoization (Top-Down) and Tabulation (Bottom-Up)",
+      "Avoids repeated calculations",
+    ],
+  },
+  {
+    title: "Types",
+    isList: true,
+    content: [
+      "Memoization (Top-Down with caching)",
+      "Tabulation (Bottom-Up with iteration)",
+      "Bitmask DP",
+      "Digit DP",
+      "State-Space Compression",
+    ],
+  },
+  {
+    title: "Operations",
+    isList: true,
+    content: [
+      "Identify the state and define DP[i]",
+      "Set base cases",
+      "Write recurrence relation",
+      "Apply memoization or tabulation",
+      "Optimize space if needed",
+    ],
+  },
+  {
+    title: "Time & Space Complexity",
+    isList: true,
+    content: [
+      "Time: O(n), O(n*m), O(n²) based on state space",
+      "Space: O(n) or O(n²)",
+      "Memoization uses recursion stack space",
+      "Tabulation allows space optimization",
+    ],
+  },
+  {
+    title: "Applications",
+    isList: true,
+    content: [
+      "Longest Common Subsequence (LCS)",
+      "0/1 Knapsack Problem",
+      "Fibonacci Number",
+      "Coin Change Problem",
+      "Matrix Chain Multiplication",
+      "Palindrome Partitioning",
+    ],
+  },
+];
+  const dpProblems = [
+    {
+      name :"climbing stairs",
+      func : ()=>climbingStairsDP(7),
+      problemName : "climbing stairs"
+    }
+  ]
+  const [selectedAlgo, setSelectedAlgo] = useState(null);
+
+  const handleAlgoClick = (algo) => {
+    setSelectedAlgo(algo);
+  };
+useEffect(() => {
+    setSelectedAlgo(dpProblems[0]);
+  }, []);
   return (
     <>
     <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
         Dynamic Programming
       </h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8">
-  {/* <!-- Definition --> */}
-  <div className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Definition</h1>
-    <p className="text-lg text-justify px-4" id="definition">Dynamic Programming (DP) is an optimization technique used to solve complex problems by breaking them down into simpler subproblems and storing the results of subproblems to avoid redundant computation.</p>
-  </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-12 pb-8 gap-y-8">
+      {dpCards.map((card,idx)=>(
+        <AlgoCard key={idx} {...card} />
 
-  {/* <!-- Properties --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Properties</h1>
-    <ul className="list-disc text-justify text-lg px-4" id="properties">
-  <li>Overlapping Subproblems: Repeated calls with the same inputs.</li>
-  <li>Optimal Substructure: Optimal solution can be constructed from optimal solutions of its subproblems.</li>
-  <li>Memoization (Top-Down) and Tabulation (Bottom-Up) approaches.</li>
-  <li>Used when recursion leads to repeated calculations.</li>
-</ul>
-  </div>
-
-  {/* <!-- Types --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Types</h1>
-    <ul className="list-disc text-justify text-lg px-4" id="types"><li>Memoization (Top-Down with caching)</li>
-  <li>Tabulation (Bottom-Up with iteration)</li>
-  <li>Bitmask DP</li>
-  <li>Digit DP</li>
-  <li>State-Space Compression</li></ul>
-  </div>
-
-  {/* <!-- Operations --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Operations</h1>
-    <ul className="list-disc text-lg text-justify px-4" id="operations"><li>Identify the state and define DP[i] meaning.</li>
-  <li>Set base cases correctly.</li>
-  <li>Write recurrence relation / transition formula.</li>
-  <li>Implement memoization or tabulation.</li>
-  <li>Optimize space if needed.</li></ul>
-  </div>
-
-  {/* <!-- Time & Space Complexity --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Time & Space Complexity</h1>
-    <ul className="text-lg list-disc text-justify px-4" id="complexity"><li>Time: O(n), O(n * m), O(n²), depending on state space.</li>
-  <li>Space: O(n) or O(n²), reducible in many problems.</li>
-  <li>Memoization uses extra space for recursion stack.</li>
-  <li>Tabulation allows easy optimization of space.</li></ul>
-  </div>
-
-  {/* <!-- Applications --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Applications</h1>
-    <ul className="list-disc text-lg text-justify px-4" id="applications"><li>Longest Common Subsequence (LCS)</li>
-  <li>0/1 Knapsack Problem</li>
-  <li>Fibonacci Number</li>
-  <li>Coin Change Problem</li>
-  <li>Matrix Chain Multiplication</li>
-  <li>Palindrome Partitioning</li></ul>
-  </div>
-</div>
-
+      ))}
+    </div>
 <hr />
-{/* <!-- Visualization Area --> */}
-<VisualizeArea onExplain={()=>climbingStairsDP(7)}/>
+      {/* Visualizer Section */}
+      <VisualizeArea
+        onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}
+      />
     </>
   );
 }
 export function Greedy() {
+  const greedyCards = [
+    {
+      title: "Definition",
+      content:
+        "Greedy algorithms build up a solution piece by piece, always choosing the next piece that offers the most immediate benefit.",
+    },
+    {
+      title: "Properties",
+      isList: true,
+      content: [
+        "Greedy Choice Property",
+        "Optimal Substructure",
+        "No revisiting or backtracking",
+        "Efficient & fast (O(n log n) or O(n))",
+      ],
+    },
+    {
+      title: "Types",
+      isList: true,
+      content: [
+        "Pure Greedy",
+        "Greedy with Sorting",
+        "Greedy with Priority Queue",
+        "Interval Scheduling",
+      ],
+    },
+    {
+      title: "Operations",
+      isList: true,
+      content: [
+        "Sort data based on a strategy",
+        "Iterate and pick best local choice",
+        "Check for constraints",
+        "Build solution incrementally",
+      ],
+    },
+    {
+      title: "Time & Space Complexity",
+      isList: true,
+      content: [
+        "Time: O(n log n) (due to sorting)",
+        "Space: O(1) to O(n)",
+        "Faster than DP for suitable problems",
+      ],
+    },
+    {
+      title: "Optimization Techniques",
+      isList: true,
+      content: [
+        "Greedy with custom comparator",
+        "Greedy with heap/priority queue",
+        "Greedy in hybrid with DP",
+        "Greedy with greedy-choice test",
+      ],
+    },
+  ];
+  const greedyProblem = [
+    {
+      name :"container with most water",
+      func : ()=> problemAnswers["container with most water"]([1, 8, 6, 2, 5, 4, 8, 3, 7]),
+      problemName : "container with most water"
+    }
+  ];
+  const [selectedAlgo, setSelectedAlgo] = useState(null);
+
+  useEffect(() => {
+    setSelectedAlgo(greedyProblem[0]);
+  }, []);
+
   return (
     <>
-    <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
-        Greedy algorithms
+      <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
+        Greedy Algorithms
       </h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8">
-  {/* <!-- Definition --> */}
-  <div className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Definition</h1>
-    <p className="text-lg text-justify px-4">
-      Greedy algorithms build up a solution piece by piece, always choosing the next piece that offers the most immediate benefit. The decision made at each step is locally optimal in the hope it leads to a globally optimal solution.
-    </p>
-  </div>
-
-  {/* <!-- Properties --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Properties</h1>
-    <ul className="list-disc text-justify text-lg px-4">
-      <li>Greedy Choice Property</li>
-      <li>Optimal Substructure</li>
-      <li>No revisiting or backtracking</li>
-      <li>Efficient & fast (O(n log n) or O(n))</li>
-    </ul>
-  </div>
-
-  {/* <!-- Types --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Types</h1>
-    <ul className="list-disc text-justify text-lg px-4">
-      <li>Pure Greedy</li>
-      <li>Greedy with Sorting</li>
-      <li>Greedy with Priority Queue</li>
-      <li>Interval Scheduling</li>
-    </ul>
-  </div>
-
-  {/* <!-- Operations --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Operations</h1>
-    <ul className="list-disc text-lg text-justify px-4">
-      <li>Sort data based on a strategy (profit, weight, deadline)</li>
-      <li>Iterate and pick the best local choice</li>
-      <li>Check for constraints (capacity, conflicts, overlaps)</li>
-      <li>Build solution incrementally</li>
-    </ul>
-  </div>
-
-  {/* <!-- Time & Space Complexity --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Time & Space Complexity</h1>
-    <ul className="text-lg list-disc text-justify px-4">
-      <li>Time: O(n log n) (due to sorting)</li>
-      <li>Space: O(1) to O(n), depends on implementation</li>
-      <li>Faster than DP for suitable problems</li>
-    </ul>
-  </div>
-  {/* <!-- Optimization Techniques --> */}
-  <div className="flex flex-col items-center bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
-    <h1 className="text-3xl font-semibold text-white text-center m-4">Optimization Techniques</h1>
-    <ul className="list-disc text-lg text-justify px-4">
-      <li>Greedy with sorting (custom comparator)</li>
-      <li>Greedy with heap/priority queue for dynamic choices</li>
-      <li>Use greedy in hybrid with DP for some problems</li>
-      <li>Greedy with greedy-choice test (mathematical proof)</li>
-    </ul>
-  </div>
-</div>
-<hr />
-{/* Visualization area*/}
-    <VisualizeArea onExplain={()=>problemAnswers["container with most water"]([1, 8, 6, 2, 5, 4, 8, 3, 7])}/>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-12 pb-8 gap-y-8">
+      {greedyCards.map((card, i) => (
+        <AlgoCard key={i} {...card} />
+      ))}
+      </div>
+      <hr />
+      <VisualizeArea
+        onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}
+      />
     </>
   );
 }
+
 export function BitM() {
   const bitManipulationCards = [
   {
@@ -334,103 +390,99 @@ export function BitM() {
     ],
   },
 ];
+const bitManipulation = [
+  {
+    name : "change bit at position",
+    func :()=>toggleBitAnimation(8,2),
+    problemName : "change bit at position"
+  }
+];
+    const [selectedAlgo, setSelectedAlgo] = useState(null);
 
+useEffect(() => {
+    setSelectedAlgo(bitManipulation[0]);
+  }, []);
   return (
     <>
     <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
         Bit manipulation
       </h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-12 pb-8 gap-y-8">
       {bitManipulationCards.map((card, i) => (
         <AlgoCard key={i} {...card} />
       ))}
     </div>
     <hr/>
-    <VisualizeArea onExplain={()=>toggleBitAnimation(8,2)}/>
+    <VisualizeArea
+        onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}
+      />
     </>
   );
 }
 export function Tree() {
+  const LCA = async () => {
+    const arr = [1, 2, 3, 4, 5];
+    const root = buildTreeFromArray(arr);
+    renderTree(root);
+    await animateLCA(root, 5, 4);
+  };
+
+  const treeProblems = [
+    {
+      name: "lowest common ancestor",
+      func: () => LCA(),
+      problemName: "lowest common ancestor",
+    },
+  ];
+
+  const [selectedAlgo, setSelectedAlgo] = useState(null);
+
+  useEffect(() => {
+    setSelectedAlgo(treeProblems[0]);
+  }, []);
+
   return (
     <>
       <h1 className="text-white text-4xl text-center mb-8 font-semibold">
-          Tree Algorithms
-        </h1>
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8"
-        >
-          <div
-            className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
-          >
-            <h1
-              className="text-xl md:text-3xl font-semibold text-white text-center mb-4"
+        Tree Algorithms
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8">
+        <div className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
+          <h1 className="text-xl md:text-3xl font-semibold text-white text-center mb-4">
+            Tree <br /> Traversals
+          </h1>
+          <div className="flex justify-center items-center h-16">
+            <a
+              href="#"
+              onClick={() => redirectToVisualizer("tree")}
+              className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
             >
-              Tree <br/> Traversals
-            </h1>
-            <div className="flex justify-center items-center h-16">
-              <a
-                href="#"
-                onClick={()=>redirectToVisualizer("tree")}
-                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-              >
-                Visualize &#8594;
-              </a>
-            </div>
-          </div>
-          <div
-            className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
-          >
-            <h1
-              className="text-xl md:text-3xl font-semibold text-white text-center mb-4"
-            >
-              Lowest Common Ancestor
-            </h1>
-            <div className="flex justify-center items-center h-16">
-              <a
-                href=""
-                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-              >
-                Visualize &#8594;
-              </a>
-            </div>
-          </div>
-          <div
-            className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
-          >
-            <h1
-              className="text-xl md:text-3xl font-semibold text-white text-center mb-4"
-            >
-              BST <br/> Operations
-            </h1>
-            <div className="flex justify-center items-center h-16">
-              <a
-                href="#"
-                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-              >
-                Visualize &#8594;
-              </a>
-            </div>
-          </div>
-          <div
-            className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
-          >
-            <h1
-              className="text-xl md:text-3xl font-semibold text-white text-center mb-4"
-            >
-              Segment <br/> Tree
-            </h1>
-            <div className="flex justify-center items-center h-16">
-              <a
-                href=""
-                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-              >
-                Visualize &#8594;
-              </a>
-            </div>
+              Visualize →
+            </a>
           </div>
         </div>
-        <hr/>
-        <VisualizeArea/>
+
+        <div className="bg-white/20 p-8 rounded-lg shadow-md shadow-cyan-500/50 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg">
+          <h1 className="text-xl md:text-3xl font-semibold text-white text-center mb-4">
+            Lowest Common Ancestor
+          </h1>
+          <div className="flex justify-center items-center h-16">
+            <a
+              href="#visualize"
+              onClick={() => setSelectedAlgo(treeProblems[0])}
+              className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+            >
+              Visualize →
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <VisualizeArea
+        onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}
+      />
     </>
   );
 }
@@ -485,19 +537,33 @@ export function SlidingWindow( ) {
     ],
   },
 ];
+  const slidingWindow = [
+    {
+      name :"sliding window",
+      func:() =>slidingWindowSum([1, 3, 2, 5, 4, 1], 3),
+      problemName :"sliding window - max sum"
+    }
+  ]
+const [selectedAlgo, setSelectedAlgo] = useState(null);
+
+  useEffect(() => {
+    setSelectedAlgo(slidingWindow[0]);
+  }, []);
+
 
   return (
     <>
     <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
         Sliding window algorithm
       </h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-12 pb-8 gap-y-8">
       {slidingWindowCards.map((card, i) => (
         <AlgoCard key={i} {...card} />
       ))}
     </div>
     <hr/>
-    <VisualizeArea onExplain={()=>slidingWindowSum([1, 3, 2, 5, 4, 1], 3)}/>
+    <VisualizeArea onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}/>
     </>
   );
 }
@@ -555,23 +621,36 @@ export function PreSumDiffArr( ) {
     ],
   },
 ];
+const preDiffArr = [
+  {
+    name: "prefix sum difference array",
+    func : ()=>problemAnswers["product of array except itself"]([1,2,3,4]),
+    problemName:"prefix sum"
+  }
+]
+const [selectedAlgo, setSelectedAlgo] = useState(null);
+
+  useEffect(() => {
+    setSelectedAlgo(preDiffArr[0]);
+  }, []);
+
   return (
     <>
     <h1 className="text-white text-center text-3xl sm:text-4xl mb-6 font-semibold">
         Prefix sum & difference array
       </h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-12 pb-8 gap-y-8">
       {prefixSumDiffCards.map((card, i) => (
         <AlgoCard key={i} {...card} />
       ))}
     </div>
     <hr />
-    <VisualizeArea onExplain={()=>prefixDiffCombined()}/>
+    <VisualizeArea onExplain={selectedAlgo?.func}
+        problemName={selectedAlgo?.problemName}/>
     </>
   );
 }
 
-//
 async function animateFib(n) {
   // Create a visual stack box
   const label = `fib(${n}) = ?`;
@@ -674,39 +753,63 @@ const AlgoCard = ({ title, content, isList = false }) => (
 );
 export default AlgoCard;
 
-export function VisualizeArea ({onExplain}) {
+export function VisualizeArea({ onExplain, problemName }) {
+  const [text, setText] = useState("The output will be shown here");
+
+  const handleExplainClick = async () => {
+    if (pseudoExplain[problemName]) {
+      setText(pseudoExplain[problemName].explanation);
+    } else {
+      setText("Explanation not available.");
+    }
+
+    await delay(2000); // wait 2 seconds before running animation
+    if (onExplain) await onExplain();
+  };
+
+  const handlePseudocodeClick = () => {
+    if (pseudoExplain[problemName]) {
+      setText(pseudoExplain[problemName].pseudocode);
+    } else {
+      setText("Pseudocode not available.");
+    }
+  };
+
   return (
-    <>
-    <div className="px-16">
-    <section className="bg-white/20 py-8 px-4 sm:px-6 md:px-10 lg:px-16 rounded-lg shadow-md shadow-cyan-500/50 mb-8">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-white mb-6">
-          Visualize
-        </h2>
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
-          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium text-white transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
-          onClick={onExplain} >
-            Explanation
-          </button>
-          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium text-white transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400">
-            Pseudocode
-          </button>
-        </div>
-        <div className="mt-6 bg-white/20 rounded-xl p-4 sm:p-6 mb-8">
-          <pre
-            className="bg-gray-900 rounded-lg p-4 overflow-x-auto text-sm sm:text-lg text-white font-mono"
-            id="pseudocodeText"
-          >
-            The output will be shown here
-          </pre>
-        </div>
-        <div
-          className="bg-white/20 border-2 border-dashed border-gray-300 rounded-xl h-52 sm:h-64 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-sm sm:text-lg text-center px-4"
-          id="visualize"
+    <section className="bg-white/20 py-8 px-4 sm:px-6 md:px-10 lg:px-12 rounded-lg shadow-md shadow-cyan-500/50 mb-8">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-white mb-6">
+        Visualize
+      </h2>
+      <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <button
+          className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium text-white transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+          onClick={handleExplainClick}
         >
-          {/* Visual output will appear here */}
-        </div>
-      </section>
+          Explanation
+        </button>
+        <button
+          className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium text-white transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+          onClick={handlePseudocodeClick}
+        >
+          Pseudocode
+        </button>
       </div>
-    </>
-  )
+
+      {/* Explanation or Pseudocode */}
+      <div className="mt-6 bg-white/20 rounded-xl p-4 sm:p-6 mb-8">
+        <pre className="bg-gray-900 rounded-lg p-4 overflow-x-auto text-sm sm:text-lg text-white font-mono whitespace-pre-wrap">
+          {text}
+        </pre>
+      </div>
+
+      {/* Visualization Container */}
+      <div
+        className="bg-white/20 border-2 border-dashed border-gray-300 rounded-xl h-52 sm:h-64 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-sm sm:text-lg text-center px-4"
+        id="visualize"
+      >
+        {/* Animation output appears here */}
+      </div>
+    </section>
+  );
 }
+

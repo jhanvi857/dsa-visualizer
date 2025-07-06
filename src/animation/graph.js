@@ -1,6 +1,7 @@
 import { drawEdgeArrow,highlightNode,highlightEdge ,sleep, renderGraph,updateWeightDisplay} from "../utils/structure";
-import { createStatus } from "../utils/visualHelpers";
+import { createStatus, getContainer } from "../utils/visualHelpers";
 export async function dijkstra(graph, start) {
+  const container = getContainer();
   const dist = {};
   const visited = {};
   const pq = [];
@@ -34,9 +35,10 @@ export async function dijkstra(graph, start) {
     await highlightNode(current, "green");
   }
 
-  createStatus(`Shortest distances:\n${JSON.stringify(dist,null,2)}`);
+  createStatus(container,`Shortest distances:\n${JSON.stringify(dist,null,2)}`);
 }
 export async function topoSort(graph) {
+  const container = getContainer();
     renderGraph(graph);
   const indegree = {};
   const result = [];
@@ -80,10 +82,11 @@ export async function topoSort(graph) {
     await highlightNode(current, "green");
   }
 
-  createStatus("Topological Order: " + result.join(" → "));
+  createStatus(container,"Topological Order: " + result.join(" → "));
 }
 //  Bellman ford
 export async function bellmanFord(graph, start) {
+  const container = getContainer();
   const dist = {};
   graph.getVertices().forEach(v => dist[v] = Infinity);
   dist[start] = 0;
@@ -100,12 +103,13 @@ export async function bellmanFord(graph, start) {
             }
         }
     }
-    createStatus(`Shortest distances from ${start}: ${JSON.stringify(dist)}`);
+    createStatus(container,`Shortest distances from ${start}: ${JSON.stringify(dist)}`);
 
 }
 
 // Floyd Warshall
 export async function floydWarshall(graph) {
+  const container = getContainer();
     renderGraph(graph)
   const V = graph.getVertices();
   const dist = {};
@@ -133,11 +137,12 @@ export async function floydWarshall(graph) {
       }
     }
   }
-  createStatus(`Shortest distance between all pairs of vertices : ${JSON.stringify(dist)}`);
+  createStatus(container,`Shortest distance between all pairs of vertices : ${JSON.stringify(dist)}`);
 }
 
 // kruskal algorithm
 export async function kruskal(graph) {
+  const container = getContainer();
   const edges = graph.getAllEdges().sort((a, b) => a[2] - b[2]);
   const parent = {}, find = x => (parent[x] === x ? x : parent[x] = find(parent[x]));
 
@@ -155,6 +160,7 @@ export async function kruskal(graph) {
 }
 // prim's algorithm
 export async function prim(graph, start) {
+  const container = getContainer();
   const parent = {};
   const key = {};
   const mstSet = {};
@@ -193,11 +199,12 @@ export async function prim(graph, start) {
     }
   }
 
-  createStatus("MST (Prim’s): " + JSON.stringify(parent));
+  createStatus(container,"MST (Prim’s): " + JSON.stringify(parent));
 }
 
 
 export async function kosaraju(graph) {
+  const container = getContainer();
   const visited = new Set();
   const stack = [];
   const transpose = {};
@@ -249,10 +256,11 @@ export async function kosaraju(graph) {
     }
   }
 
-  createStatus(`Strongly Connected Components: ${JSON.stringify(components)}`);
+  createStatus(container,`Strongly Connected Components: ${JSON.stringify(components)}`);
 }
 
 export async function tarjans(graph) {
+  const container = getContainer();
   let index = 0;
   const indices = {};
   const lowlink = {};
@@ -298,7 +306,7 @@ export async function tarjans(graph) {
     }
   }
 
-  createStatus(`Strongly Connected Components: ${JSON.stringify(result)}`);
+  createStatus(container,`Strongly Connected Components: ${JSON.stringify(result)}`);
 }
 
 export function getMinKey(keys, mstSet) {

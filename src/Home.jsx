@@ -33,7 +33,7 @@ function Home() {
   return (
     <>
       <div className="flex flex-col lg:gap-x-20 px-16 mt-4 w-full">
-        <h1 className="text-white text-4xl text-center mb-8 font-semibold">
+        <h1 className="text-white text-4xl text-center mb-8 font-semibold" id="data-structures">
           Data structures
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-4 gap-y-8">
@@ -212,7 +212,7 @@ function Home() {
           Algorithms
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8">
           {categories.map((categ, idx) => (
             <Link
               key={idx}
@@ -236,11 +236,11 @@ function Home() {
       </div>
       <hr />
       {/* <!-- classical questions... --> */}
-      <h1 className=" text-4xl text-center font-semibold">
+      <h1 className=" text-4xl text-center font-semibold" id="classical-questions">
         classical questions
       </h1>
-      <div className="flex flex-col lg:gap-x-20 px-16 mt-8 w-full gap-6 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8">
+      <div className="flex flex-col lg:gap-x-20 px-4 md:px-16 mt-8 w-full gap-6 ">
+        <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8">
           {questions.map((que, idx) => (
             <Link
               key={idx}
@@ -255,7 +255,7 @@ function Home() {
         </div>
         <div className="flex justify-center items-center h-16">
           <Link to="/explore-questions">
-            <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 text-center rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400">
+            <button className="cursor-pointer bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 text-center rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400">
               Explore more problems&#8594;
             </button>
           </Link>

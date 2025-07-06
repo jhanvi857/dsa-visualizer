@@ -45,12 +45,12 @@ This project is not just about coding—it’s about **learning by seeing**, mak
 
 | Layer       | Technology           |
 |-------------|----------------------|
-| **Frontend** | React.js, Tailwind CSS, Framer Motion |
+| **Frontend** | React.js, Tailwind CSS |
 | **Backend**  | Node.js, Express.js  |
-| **Database** | MongoDB *(optional for storing approaches)* |
+| **Database** | MongoDB  |
 | **Animations** | Custom DOM manipulation logic + React state updates |
 
 ---
 
 
-## Thank you for checking out ! 🚀
+## Thank You For Checking Out ! 🚀

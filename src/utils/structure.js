@@ -309,7 +309,6 @@ export function deleteTreeNode(root, key) {
 
   return root;
 }
-// 🔥 Add this function to your existing tree logic file
 export async function animateTreeHeight(rootNode) {
   const container = getContainer();
 
@@ -346,8 +345,56 @@ export async function animateTreeHeight(rootNode) {
 
   createStatus(container, `Height of the tree is: ${maxHeight}`);
 }
+async function findPath(root, target, path = []) {
+  if (!root) return false;
 
+  path.push(root);
+  await highlightNode(root.value);
+  await delay(500);
 
+  if (root.value === target) return true;
+
+  if (
+    (await findPath(root.left, target, path)) ||
+    (await findPath(root.right, target, path))
+  ) {
+    return true;
+  }
+
+  path.pop();
+  return false;
+}
+
+export async function animateLCA(root, val1, val2) {
+  const container = getContainer();
+  resetContainer("relative", container);
+  renderTree(root); 
+  const status = createStatus(container, "Finding Lowest Common Ancestor...");
+
+  const path1 = [];
+  const path2 = [];
+
+  const found1 = await findPath(root, val1, path1);
+  const found2 = await findPath(root, val2, path2);
+
+  if (!found1 || !found2) {
+    status.innerText = "One or both nodes not found!";
+    return;
+  }
+
+  let i = 0;
+  while (
+    i < path1.length &&
+    i < path2.length &&
+    path1[i].value === path2[i].value
+  ) {
+    i++;
+  }
+
+  const lcaNode = path1[i - 1];
+  await highlightNode(lcaNode.value);
+  status.innerText = `Lowest Common Ancestor of ${val1} and ${val2} is: ${lcaNode.value}`;
+}
 // graph data structure..
 export const graph = {
   vertices: [],

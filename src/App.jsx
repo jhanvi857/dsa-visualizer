@@ -39,7 +39,7 @@ function App() {
       <a href="https://www.linkedin.com/in/jhanvi-patel-0a032b35a/" target="_blank" rel="noreferrer" className="hover:text-cyan-400">
         LinkedIn
       </a>
-      <a href="mailto:you@example.com" className="hover:text-cyan-400">
+      <a href="mailto:jhanvip8507@gmail.com" className="hover:text-cyan-400">
         Contact
       </a>
     </div>

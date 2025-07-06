@@ -3,6 +3,7 @@ import { graph } from "../src/utils/structure";
 import {LLAnimate} from "../src/animation/LLAnimation";
 import {problemAnswers} from "../src/animation/problemAnimations";
 import { euclideanGCD, fermatsLittleTheorem, modExpo, sieveOfEratosthenes } from "../src/animation/algoAnimation";
+import { pseudoExplain } from "../classical_questions/pseudoExplain";
 const headings = [
   "Number Theory & Math Algorithms",
   "Array algorithms & pointer techniqueues",
@@ -52,11 +53,9 @@ function displayAlgoCards(headings, groupedAlgorithms) {
     heading.innerText = headingText;
     algoDiv.appendChild(heading);
 
-    // Grid wrapper for cards
     const grid = document.createElement("div");
     grid.className = "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 pb-8 gap-y-8";
 
-    // Create each card
     groupedAlgorithms[headingText].forEach((algo) => {
       const card = document.createElement("div");
       card.className =
@@ -83,10 +82,8 @@ function displayAlgoCards(headings, groupedAlgorithms) {
       grid.appendChild(card);
     });
 
-    // Append full grid after heading
     algoDiv.appendChild(grid);
 
-    // Add a separator line
     const hr = document.createElement("hr");
     algoDiv.appendChild(hr);
   });
@@ -97,6 +94,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.querySelectorAll("a[data-algo]").forEach((btn)=>{
     btn.addEventListener("click",async (e) => {
       const algo = btn.getAttribute("data-algo");
+      // Cleaned key to match pseudoExplain
+const cleanKey = algo.toLowerCase().replace(/\n/g, "").trim();
+
+// If data exists in pseudoExplain
+if (pseudoExplain[cleanKey]) {
+  const { explanation, pseudocode } = pseudoExplain[cleanKey];
+
+  const pseudoBox = document.getElementById("pseudocodeText");
+  pseudoBox.textContent = `${explanation.trim()}\n\nPseudocode:\n${pseudocode.trim()}`;
+} else {
+  document.getElementById("pseudocodeText").textContent =
+    "Explanation and pseudocode not available.";
+}
+
+      
       if(algo==="dijkstra's algorithm") {
         graph.addVertex("a");
         graph.addVertex("b");

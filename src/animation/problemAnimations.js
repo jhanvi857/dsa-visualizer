@@ -46,7 +46,6 @@ export const problemAnswers = {
     siArrow.innerText = "✖ Not found!!";
     eiArrow.innerText = "✖ Not found!!";
   },
-
   "stock buy & sell": async function (prices) {
     const container = getContainer();
 
@@ -74,7 +73,6 @@ export const problemAnswers = {
     }
     status.innerHTML += `<br><span class='text-green-400'>Done! Max profit = ${maxProfit}</span>`;
   },
-
   "container with most water": async function (height) {
     const container = getContainer();
 
@@ -210,7 +208,6 @@ export const problemAnswers = {
 
     status.innerText = `Target ${target} not found in the array.`;
   },
-
   "peak index in mountain array": async function (arr) {
     const container = getContainer();
 
@@ -243,7 +240,6 @@ export const problemAnswers = {
 
     status.innerText = `No peak found.`;
   },
-
   "single element in sorted array": async function (arr) {
     const container = getContainer();
 
@@ -362,7 +358,6 @@ export const problemAnswers = {
 
     status.innerText = "Array sorted successfully!";
   },
-
   "merge two sorted arrays": async function (arr1, arr2) {
     const container = getContainer();
 
@@ -428,7 +423,6 @@ export const problemAnswers = {
     await delay(1000);
     status.innerText = `Merged array: [${merged.join(", ")}]`;
   },
-
   "search in a 2d matrix": async function (matrix, target) {
     const container = getContainer();
 

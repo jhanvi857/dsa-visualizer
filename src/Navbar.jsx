@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 function Navbar() {
     return(
         <>
@@ -9,26 +10,27 @@ function Navbar() {
 
             {/* <!-- Desktop Menu --> */}
             <div className="hidden sm:flex space-x-4 items-center">
-              <a
-                href="#"
-                className="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              <Link to="/">
+              <button
+                className="cursor-pointer bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
               >
                 Home
-              </a>
+              </button>
+              </Link>
               <a
-                href="#"
+                href="#data-structures"
                 className="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
               >
                 Data Structures
               </a>
               <a
-                href="#"
+                href="#algorithms"
                 className="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
               >
                 Algorithms
               </a>
               <a
-                href="#"
+                href="#classical-questions"
                 className="bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
               >
                 Classical Problems
@@ -61,12 +63,13 @@ function Navbar() {
             id="mobile-menu"
             className="hidden sm:hidden flex-col space-y-2 mt-2 pb-4"
           >
-            <a
-              href="#"
-              className="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
-            >
-              Home
-            </a>
+            <Link to="/">
+              <button
+                className="cursor-pointer bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50 transition transform duration-400 hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-cyan-500/60"
+              >
+                Home
+              </button>
+              </Link>
             <a
               href="#"
               className="block text-white bg-white/10 px-3 py-2 rounded-md text-sm font-medium shadow-sm shadow-cyan-500/50"
