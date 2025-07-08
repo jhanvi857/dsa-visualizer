@@ -1,0 +1,27 @@
+@import "tailwindcss";
+body{
+            background-image: url("https://i.pinimg.com/736x/fe/e0/6a/fee06a2c63c53dbf14061770258b7ad3.jpg");
+            background-size: contain;
+            background-attachment: fixed;
+            background-position: center;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            color: white;
+         }
+         h1 {
+            font-family: 'Poppins',sans-serif;
+         }
+         img{
+            height:120px;
+            width: 120px;
+            border-radius: 5px;
+         }
+         hr {
+            margin: 2rem auto;
+            height: 2px;
+            background-color: #22d3ee; /* cyan-400 */
+            box-shadow: 0 0 10px #22d3ee;
+            border: none;
+            width: 98%;
+         }
