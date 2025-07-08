@@ -89,13 +89,13 @@ runAnimationAndExplain({
               </a>
               <button
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400 hover:cursor-pointer"
-                id="pseudocode"
+                id="pseudocode" 
               >
                 Pseudocode
               </button>
               <div className="relative inline-block text-left">
                 <button
-                  id="codeDropdownBtn"
+                  id="codeDropdownBtn" onClick={()=>alert("No other approach available currently !")}
                   type="button"
                   className="inline-flex w-full justify-center items-center bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
                 >

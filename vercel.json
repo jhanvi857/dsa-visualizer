@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(arrays|strings|linked list|stacks|queues|trees|graphs)",
+      "destination": "/commonDs.html"
+    }
+  ]
+}
