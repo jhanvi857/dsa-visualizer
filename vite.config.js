@@ -6,17 +6,17 @@ import path from 'path';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
+    outDir: 'dist', // ✅ Vercel expects this
     rollupOptions: {
       input: {
+        main: path.resolve(__dirname, 'index.html'),
         visualizeFunc: path.resolve(__dirname, 'src/utils/visualizeFunc.js'),
         visualizer: path.resolve(__dirname, 'src/utils/visualizer.js'),
       },
       output: {
         entryFileNames: '[name].js',
-        dir: 'public/bundle', // output folder inside public
         format: 'es',
       },
     },
-    emptyOutDir: false, // so it doesn't delete public
   },
 });
