@@ -51,7 +51,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=array"
+                href="/Data_Structures/commonDS.html?type=array"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -73,7 +73,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=string"
+                href="/Data_Structures/commonDS.html?type=string"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -95,7 +95,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=linkedlist"
+                href="/Data_Structures/commonDS.html?type=linkedlist"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -116,7 +116,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=stack"
+                href="/Data_Structures/commonDS.html?type=stack"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -137,7 +137,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=queue"
+                href="/Data_Structures/commonDS.html?type=queue"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -158,7 +158,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=tree"
+                href="/Data_Structures/commonDS.html?type=tree"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -177,7 +177,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=graph"
+                href="/Data_Structures/commonDS.html?type=graph"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
@@ -193,7 +193,7 @@ function Home() {
             </p>
             <div className="flex justify-center items-center h-16">
               <a
-                href="./Data_Structures/commonDS.html?type=mapsAndSets"
+                href="/Data_Structures/commonDS.html?type=mapsAndSets"
                 className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
               >
                 Explore &#8594;
