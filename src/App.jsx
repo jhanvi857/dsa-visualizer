@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import {Link,Routes, Router,Route} from "react-router-dom"
 
-import Navbar from './navbar.jsx';
+import Navbar from './Navbar.jsx';
 import Home from "./Home.jsx";
 import { SearchingSorting,RecBackTrack,DP,Greedy,BitM,Tree,PreSumDiffArr,SlidingWindow } from "./RenderUi.jsx";
 import ClassicalQ from "../classical_questions/ClassicalQ.jsx";
