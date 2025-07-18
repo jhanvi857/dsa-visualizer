@@ -368,7 +368,7 @@ async function findPath(root, target, path = []) {
 export async function animateLCA(root, val1, val2) {
   const container = getContainer();
   resetContainer("relative", container);
-  renderTree(root); 
+  renderTree(root);
   const status = createStatus(container, "Finding Lowest Common Ancestor...");
 
   const path1 = [];
@@ -400,7 +400,18 @@ export const graph = {
   vertices: [],
   edges: [],
   adjList: {},
+  addDemoGraph: function () {
+    this.reset(); 
+    this.addVertex("a");
+    this.addVertex("b");
+    this.addVertex("c");
+    this.addVertex("d");
 
+    this.addEdge("a", "b", 2);
+    this.addEdge("a", "c", 4);
+    this.addEdge("b", "c", 1);
+    this.addEdge("c", "d", 3);
+  },
   addVertex: function (label) {
     label = label.trim().toLowerCase();
     if (!this.vertices.includes(label)) {
@@ -416,7 +427,7 @@ export const graph = {
 
     if (this.adjList[from] && this.adjList[to]) {
       this.adjList[from].push({ node: to, weight });
-      this.adjList[to].push({ node: from, weight }); // for undirected graph
+      this.adjList[to].push({ node: from, weight }); 
       this.edges.push({ from, to, weight });
       this.render();
     } else {
@@ -439,6 +450,11 @@ export const graph = {
   },
   render: function () {
     renderGraph(this);
+  },
+  reset: function () {
+    this.vertices = [];
+    this.edges = [];
+    this.adjList = {};
   },
 };
 export function updateWeightDisplay(node, weight) {

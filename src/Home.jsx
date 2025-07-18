@@ -1,10 +1,17 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import hashMap from "./hashMap.png";
-import hashSet from "./hashSet.png";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import hashMapAndSet from "./hashMapAndSet.png";
 import SubmitApproachForm from "./submitApproach";
 function Home() {
+    const location = useLocation();
+  useEffect(() => {
+  if (location.hash) {
+    const el = document.getElementById(location.hash.replace("#", ""));
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+}, [location]);
   const categories = [
     { name: "Searching & Sorting", path: "/searching-sorting" },
     { name: "Recursion & Backtracking", path: "/recursion-backtracking" },
@@ -226,12 +233,14 @@ function Home() {
           ))}
         </div>
         <div className="flex justify-center items-center h-16">
-        <a
-            href= "/algoHome.html"
-            className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 text-center rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
+        <Link to="/algorithms">
+          <button
+            
+            className="cursor-pointer bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 text-center rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
           >
             Explore more Algorithms&#8594;
-          </a>
+          </button>
+        </Link>
         </div>
       </div>
       <hr />

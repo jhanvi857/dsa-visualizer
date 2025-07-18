@@ -1,4 +1,4 @@
-import { drawEdgeArrow,highlightNode,highlightEdge ,sleep, renderGraph,updateWeightDisplay} from "../utils/structure";
+import { drawEdgeArrow,highlightNode,highlightEdge ,sleep, renderGraph,updateWeightDisplay,graph} from "../utils/structure";
 import { createStatus, getContainer } from "../utils/visualHelpers";
 export async function dijkstra(graph, start) {
   const container = getContainer();
