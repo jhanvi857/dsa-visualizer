@@ -3,6 +3,10 @@
     {
       "source": "/(arrays|strings|linked list|stacks|queues|trees|graphs)",
       "destination": "/commonDs.html"
+    },
+    {
+      "source": "/algo-home",
+      "destination": "/algoHome.html"
     }
   ]
 }

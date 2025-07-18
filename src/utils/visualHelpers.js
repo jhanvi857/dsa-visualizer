@@ -84,33 +84,18 @@ export function createBoxList(arr, container) {
   });
 }
 
-export function resetContainer(layout = "flex", container) {
-  container = container || document.getElementById("visualize");
-  if (!container) return;
-
+export function resetContainer(newLayout, container) {
+  if (!container) {
+    container = document.getElementById("visualize");
+    if (!container) return;
+  }
   container.innerHTML = "";
+  // container.className = className;
+  const baseClass =
+    "overflow-y-auto overflow-x-auto bg-white/20 border-2 border-dashed border-gray-300 rounded-xl h-52 sm:h-64 md:h-72 lg:h-80 text-gray-400 text-sm sm:text-lg text-center px-4";
 
-  // Outer: vertical scroll container
-  container.className = `
-    overflow-y-auto 
-    overflow-x-auto
-    bg-white/20 
-    border-2 border-dashed border-gray-300 
-    rounded-xl 
-    h-[20rem] 
-    px-2 
-    flex gap-4
-  `;
-
-  // Inner: horizontal scroll content
-  const wrapper = document.createElement("div");
-  wrapper.className = "w-full overflow-x-auto pl-2";
-
-  const inner = document.createElement("div");
-  inner.id = "visual-content";
-  inner.className = "flex w-max gap-2 items-center";
-  wrapper.appendChild(inner);
-  container.appendChild(wrapper);
+  // Merge base with layout-specific class like flex/grid/etc.
+  container.className = `${baseClass} ${newLayout}`;
 }
 
 export function createStatus(container, text = "") {

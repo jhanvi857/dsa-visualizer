@@ -226,8 +226,8 @@ function Home() {
           ))}
         </div>
         <div className="flex justify-center items-center h-16">
-          <a
-            href="../Algorithms/algoHome.html"
+        <a
+            href= "/algoHome.html"
             className="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 text-center rounded-md text-md md:text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
           >
             Explore more Algorithms&#8594;

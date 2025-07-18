@@ -6,6 +6,7 @@ import Navbar from './Navbar.jsx';
 import Home from "./Home.jsx";
 import { SearchingSorting,RecBackTrack,DP,Greedy,BitM,Tree,PreSumDiffArr,SlidingWindow } from "./RenderUi.jsx";
 import ClassicalQ from "../classical_questions/ClassicalQ.jsx";
+import AlgoHome from "../Algorithms/AlgoHome.jsx";
 function App() {
   // const [content, setContent] = useState(null);
   
@@ -24,6 +25,7 @@ function App() {
         <Route path="/sliding-window" element={<SlidingWindow />} />
         <Route path="/prefix-sum-diff" element={<PreSumDiffArr />} />
         <Route path="/explore-questions" element={<ClassicalQ/>} />
+        <Route path="/algorithms" element={<AlgoHome />} />
       </Routes>
       </main>
       <footer className="bg-white/20 text-white py-6 mt-8 shadow-inner">
