@@ -555,7 +555,7 @@ function populateContent(data) {
     data.visualOperations?.buttons || [],
     data.visualOperations?.pseudocode || {}
   );
-  generateAlgo(data.algorithms || []);
+  // generateAlgo(data.algorithms || []);
 }
 
 // buttons...
@@ -582,25 +582,25 @@ function generateButtons(buttonNames, pseudocodeMap) {
   });
 }
 // algorithms..
-function generateAlgo(algoName) {
-  const algoDiv = document.getElementById("algorithms");
-  algoDiv.innerHTML = "";
-  algoName.forEach((algo) => {
-    const divs = document.createElement("div");
-    divs.className = `
-  bg-white/20 text-base text-center sm:text-lg md:text-lg lg:text-xl 
-  font-semibold 
-  p-3 sm:p-4 md:p-6 xl:p-8 
-  rounded-lg 
-  shadow-md shadow-cyan-500/50 
-  transition transform duration-300 ease-in-out 
-  hover:scale-105 hover:-translate-y-1 hover:shadow-lg
-`.trim();
-    divs.innerText = algo;
-    algoDiv.appendChild(divs);
-    divs.onclick=()=>window.location.href = "/explore-questions"
-  });
-}
+// function generateAlgo(algoName) {
+//   const algoDiv = document.getElementById("algorithms");
+//   algoDiv.innerHTML = "";
+//   algoName.forEach((algo) => {
+//     const divs = document.createElement("div");
+//     divs.className = `
+//   bg-white/20 text-base text-center sm:text-lg md:text-lg lg:text-xl 
+//   font-semibold 
+//   p-3 sm:p-4 md:p-6 xl:p-8 
+//   rounded-lg 
+//   shadow-md shadow-cyan-500/50 
+//   transition transform duration-300 ease-in-out 
+//   hover:scale-105 hover:-translate-y-1 hover:shadow-lg
+// `.trim();
+//     divs.innerText = algo;
+//     algoDiv.appendChild(divs);
+//     divs.onclick=()=>window.location.href = "/explore-questions"
+//   });
+// }
 function fillList(id, items) {
   const list = document.getElementById(id);
   list.innerHTML = "";

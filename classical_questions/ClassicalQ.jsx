@@ -30,7 +30,7 @@ runAnimationAndExplain({
 
   return (
     <>
-      <h1 className="text-white text-4xl text-center mb-8 font-semibold">
+      <h1 className="text-white text-4xl text-center mb-8 font-semibold" data-aos="fade-up">
         Classical questions of DSA
       </h1>
       <div className="grid grid-cols-2 px-1 gap-x-2 md:grid-cols-3 xl:grid-cols-4 md:gap-x-6 pb-8 gap-y-8 sm:px-6 md:px-10">
@@ -38,7 +38,7 @@ runAnimationAndExplain({
           <div
             key={key}
             className="bg-white/20 text-white p-4 rounded-xl shadow-md shadow-cyan-500/50 flex flex-col items-center text-center space-y-3 transition transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
-          >
+          data-aos="fade-up" >
             <h2 className="text-2xl font-semibold mb-2">
               {index + 1}. {key}
             </h2>
@@ -69,7 +69,7 @@ runAnimationAndExplain({
 
       <hr />
       {/* <!-- Visualization div.. --> */}
-      <div className="px-4 sm:px-6 md:px-10 lg:px-10 rounded-lg mb-6">
+      <div className="px-4 sm:px-6 md:px-10 lg:px-10 rounded-lg mb-6" data-aos="fade-up">
         <section className="bg-white/20 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-10 lg:px-16 rounded-lg shadow-md shadow-cyan-500/50">
           <div className="max-w-7xl mx-auto">
             {/* <!-- Heading --> */}

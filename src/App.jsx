@@ -1,7 +1,8 @@
 import "./App.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {Link,Routes, Router,Route} from "react-router-dom"
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Navbar from './Navbar.jsx';
 import Home from "./Home.jsx";
 import { SearchingSorting,RecBackTrack,DP,Greedy,BitM,Tree,PreSumDiffArr,SlidingWindow } from "./RenderUi.jsx";
@@ -9,11 +10,19 @@ import ClassicalQ from "../classical_questions/ClassicalQ.jsx";
 import AlgoHome from "../Algorithms/AlgoHome.jsx";
 function App() {
   // const [content, setContent] = useState(null);
-  
+  useEffect(() => {
+  AOS.init({
+    duration: 800,     // animation duration
+    once: true,        // only animate once
+    easing: 'ease-out',
+  });
+}, []);
   return (
     <>
-      <Navbar/>
-      <main className="pt-20 px-4">
+      <section data-aos="fade-down">
+        <Navbar />
+      </section>
+      <main className="pt-20 px-4" >
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/searching-sorting" element={<SearchingSorting />} />

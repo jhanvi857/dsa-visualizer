@@ -63,7 +63,6 @@ const AlgoHome = () => {
       }
     }
 
-    // Reset graph structure
     if (graph.reset) graph.reset();
 
     switch (cleanKey) {
@@ -153,10 +152,10 @@ const AlgoHome = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 pt-8 pb-20 text-white" id="algorithmsHeading">
+    <div className="min-h-screen px-4 pt-8 pb-20 text-white" id="algorithmsHeading" >
       {headings.map((heading) => (
         <>
-        <div key={heading} className="mb-16">
+        <div key={heading} className="mb-16" data-aos="fade-up">
           <h1 className="text-4xl text-center mb-8 font-semibold">{heading}</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {groupedAlgorithms[heading].map((algo) => (
@@ -180,7 +179,7 @@ const AlgoHome = () => {
         <hr />
         </>
       ))}
-      <div className="px-4 sm:px-6 md:px-10 lg:px-10 rounded-lg mb-6">
+      <div className="px-4 sm:px-6 md:px-10 lg:px-10 rounded-lg mb-6" data-aos="fade-up">
         <section className="bg-white/20 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-10 lg:px-16 rounded-lg shadow-md shadow-cyan-500/50">
           <div className="max-w-7xl mx-auto">
             {/* <!-- Heading --> */}

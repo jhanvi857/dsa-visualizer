@@ -54,12 +54,12 @@ export default function SubmitApproachForm() {
 
   return (
     <>
-          <h2 className="text-2xl font-bold mb-4 text-center">Submit Your Own Approach</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center" data-aos="fade-up">Submit Your Own Approach</h2>
 
     <form
       onSubmit={handleSubmit}
       className="max-w-7xl mx-auto bg-white/20 p-6 rounded-2xl shadow-md shadow-cyan-500/50 text-white mb-8 hover:shadow-lg"
-    >
+    data-aos="fade-up" >
 
       <div className="mb-4">
         <label className="block mb-1 font-semibold">Problem Name *</label>

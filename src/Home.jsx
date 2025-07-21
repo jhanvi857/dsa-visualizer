@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <>
-      <div className="flex flex-col lg:gap-x-20 px-16 mt-4 w-full">
+      <div className="flex flex-col lg:gap-x-20 px-16 mt-4 w-full" data-aos="fade-up">
         <h1 className="text-white text-4xl text-center mb-8 font-semibold" id="data-structures">
           Data structures
         </h1>
@@ -214,7 +214,7 @@ function Home() {
       <div
         className="flex flex-col items-center lg:gap-x-20 px-4 md:px-16 mt-8 w-full"
         id="algorithms"
-      >
+      data-aos="fade-up" >
         <h1 className="text-white text-4xl text-center mb-8 font-semibold">
           Algorithms
         </h1>
@@ -245,10 +245,10 @@ function Home() {
       </div>
       <hr />
       {/* <!-- classical questions... --> */}
-      <h1 className=" text-4xl text-center font-semibold" id="classical-questions">
+      <h1 className=" text-4xl text-center font-semibold" id="classical-questions" data-aos="fade-up">
         classical questions
       </h1>
-      <div className="flex flex-col lg:gap-x-20 px-4 md:px-16 mt-8 w-full gap-6 ">
+      <div className="flex flex-col lg:gap-x-20 px-4 md:px-16 mt-8 w-full gap-6" data-aos="fade-up">
         <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8">
           {questions.map((que, idx) => (
             <Link

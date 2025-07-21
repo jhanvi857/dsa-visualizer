@@ -9,12 +9,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./ds.css"> 
-    <!-- Tailwind CDN (limited but useful for static pages) -->
 <script src="https://cdn.tailwindcss.com"></script>
    
   </head>
   <body>
-    <nav class="h-16 left-0 w-full fixed top-0 z-50">
+    <nav class="h-16 left-0 w-full fixed top-0 z-50" data-aos="fade-up">
   <div class="bg-white/10 backdrop-blur-md shadow-xl px-4 sm:px-8">
    <div class="flex items-center justify-between h-16">
       <div class="text-white font-bold text-xl">DSA Visualizer</div>
@@ -45,7 +44,7 @@
   </div>
 </nav>
 <main class="pt-20 px-4">
-    <h1 class="text-4xl font-semibold mb-4 text-center mt-4"></h1>
+    <h1 class="text-4xl font-semibold mb-4 text-center mt-4" data-aos="fade-up"></h1>
     <!-- grid 1... -->
     <div
       class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 px-16 pb-8 gap-y-8"
@@ -109,7 +108,7 @@
         </ul>
       </div>
     </div>
-    <hr />
+    <hr >
     <!-- Visualization div...-->
   <div class="px-4 sm:px-6 md:px-10 lg:px-16 rounded-lg">
   <section class="bg-white/20 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-10 lg:px-16 rounded-lg shadow-md shadow-cyan-500/50">
@@ -146,24 +145,22 @@ the pseudocode will be shown here..
   </section>
 </div>
 
-    <hr />
     <!-- Algorithms & problems div... -->
-    <h1 class="text-3xl text-center font-semibold mb-8 mt-8">
+    <!-- <h1 class="text-3xl text-center font-semibold mb-8 mt-8">
       Popular  Algorithms
     </h1>
     <div
       class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-x-6 px-16 mb-4 gap-y-8"
     id="algorithms">
     </div>
-    <!-- explore problems button.. -->
     <div class="flex justify-center items-center h-16">
       <a
-        href=""
+        href="../classical-questions/classicalQ"
         class="bg-cyan-500 shadow-lg shadow-cyan-500/50 px-3 py-2 rounded-md text-lg font-medium transition transform duration-400 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-400"
       >
         Explore problems &#8594;
       </a>
-    </div>
+    </div>-->
      </main>
     <script type="module" src="/bundle/visualizeFunc.js"></script>
 <script type="module" src="/bundle/visualizer.js"></script>
