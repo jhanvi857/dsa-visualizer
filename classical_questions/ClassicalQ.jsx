@@ -37,7 +37,7 @@ runAnimationAndExplain({
         {Object.entries(questions).map(([key, statement], index) => (
           <div
             key={key}
-            className="bg-white/20 text-white p-4 rounded-xl shadow-md shadow-cyan-500/50 flex flex-col items-center text-center space-y-3"
+            className="bg-white/20 text-white p-4 rounded-xl shadow-md shadow-cyan-500/50 flex flex-col items-center text-center space-y-3 hover:shadow-lg transition transform duration-300 ease-in-out"
           data-aos="fade-up" >
             <h2 className="text-2xl font-semibold mb-2">
               {index + 1}. {key}
