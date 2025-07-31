@@ -131,10 +131,15 @@ export async function runAnimationAndExplain({ key, visualizeElement, inputEleme
       await stringAnimation[cleanedKey]("the sky is blue");
       break;
     case "string compression":
-      
+      displayInput = "string = aabbcccc";
+      inputElement.value = displayInput;
       await stringAnimation[cleanedKey]("aabbcccc");
       break;
     case "search in a 2d matrix":
+      displayInput = `matrix = [1,3,5,7
+                                10,11,16,20
+                                23,30,34,50]
+                      Element to search = 3`
       await problemAnswers[cleanedKey]([[1, 3, 5, 7],[10, 11, 16, 20],[23, 30, 34, 50]],3);
       break;
     case "reverse a linked list":
@@ -176,15 +181,22 @@ export async function runAnimationAndExplain({ key, visualizeElement, inputEleme
       break;
     }
     case "longest common subsequence":
+      displayInput = "s1 = abcde, s2 = ace";
+      inputElement.value = displayInput;
       await longestCommonSubsequence("abcde", "ace");
       break;
     case "coin change":
+      displayInput = "arr = [1,2,5] amount = 11";
+      inputElement.value = displayInput;
       await coinChange([1, 2, 5], 11);
       break;
     case "huffman encoding":
+      displayInput = "frequency map = [5,9,12,13,16,45]";
+      inputElement.value = displayInput;
       await huffmanEncoding([5, 9, 12, 13, 16, 45]);
       break;
     case "cycle detection in undirected graph":
+      displayInput = "vertices = [A,B,C,D] edges = [A,B]"
       const vertices = ["A","B","C","D"];
       const edges = [["A", "B"],
     ["B", "C"],
